@@ -3,31 +3,32 @@ import 'package:flutter/services.dart';
 
 class ScaffoldWidget extends StatelessWidget {
   final Widget body;
-  final Color backgroundColor;
-  final Color statusBarColor;
-  final BottomNavigationBar? bottomNavigationBar;
-  final AppBar? appBar;
+  final Color? backgroundColor;
+  final Widget? bottomNavigationBar;
+  final PreferredSizeWidget? appBar;
+  final Widget? floatingActionButton;
   final bool? hasPadding;
 
   const ScaffoldWidget(
       {Key? key,
       required this.body,
-      required this.backgroundColor,
-      required this.statusBarColor,
-      this.bottomNavigationBar,
+      this.backgroundColor,
       this.appBar,
+      this.bottomNavigationBar,
+      this.floatingActionButton,
       this.hasPadding})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: statusBarColor, // status bar color
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent, systemStatusBarContrastEnforced: true));
     return Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: appBar,
+        backgroundColor: backgroundColor ?? const Color(0xFFf3f4f6),
         bottomNavigationBar: bottomNavigationBar,
+        appBar: appBar,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Padding(
           padding: hasPadding == null || hasPadding == true
               ? EdgeInsets.only(top: MediaQuery.of(context).padding.top)

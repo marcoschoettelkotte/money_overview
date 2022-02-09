@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class ScrollViewWidget extends StatelessWidget {
   final Widget child;
+
   const ScrollViewWidget({Key? key, required this.child}) : super(key: key);
 
   @override
