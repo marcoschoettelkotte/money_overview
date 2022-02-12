@@ -21,12 +21,12 @@ class InputTextWidget extends StatelessWidget {
           child: TextFormField(
             initialValue: initValue,
             enabled: enabled,
-            style: CustomTextStyle.inputText,
-            cursorColor: const Color(0xFF43648f),
+            style: CustomTextStyle.inputText(context),
+            cursorColor: Theme.of(context).accentColor,
             textAlign: TextAlign.start,
             maxLength: 100,
             controller: controller,
-            decoration: CustomInputDecorationStyle.input2OutlineStyle(FontAwesomeIcons.book, placeholder),
+            decoration: CustomInputDecorationStyle.input2OutlineStyle(context, FontAwesomeIcons.book, placeholder),
           )),
     );
   }

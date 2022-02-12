@@ -3,10 +3,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:money_overview/models/finance/finance_model.dart';
 import 'package:money_overview/models/money/money_category.dart';
+import 'package:money_overview/models/money/money_cycle.dart';
+import 'package:money_overview/models/money/money_payment_type.dart';
 import 'package:money_overview/models/money/money_type.dart';
 import 'package:money_overview/themes/style_templates/custom_text_style.dart';
 import 'package:money_overview/widgets/transactions/delete_finance_dialog_widget.dart';
-import 'package:money_overview/widgets/loading/loading_widget.dart';
 
 class TransactionsWidget extends StatefulWidget {
   final bool isReduced;
@@ -40,61 +41,111 @@ class _TransactionsWidgetState extends State<TransactionsWidget> {
                 "are you sure you want to delete ${val.title != '' ? val.title : 'unnamed'}?",
                 "DELETE",
                 val),
-            child: Card(
-              shadowColor: const Color(0xFF43648f).withOpacity(0.2),
-              elevation: 2,
-              margin: const EdgeInsets.only(top: 8, bottom: 8),
-              color: Colors.white,
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: amountColor(val.money),
-                  child: Icon(
-                    val.category.icon(),
-                    color: Colors.white,
-                    size: 20,
+            child: SizedBox(
+              height: 110,
+              child: Card(
+                shadowColor: const Color(0xFF43648f).withOpacity(0.2),
+                elevation: 2,
+                margin: const EdgeInsets.only(top: 8, bottom: 8),
+                color: Theme.of(context).primaryColor,
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: amountColor(val.money),
+                    child: Icon(
+                      val.category.icon(),
+                      color: Theme.of(context).primaryColor,
+                      size: 20,
+                    ),
                   ),
-                ),
-                title: Text(val.title != '' ? val.title : 'unnamed',
-                    style: CustomTextStyle.moneyCardHeaderText, overflow: TextOverflow.ellipsis),
-                subtitle: Text(
-                  val.comment,
-                  style: CustomTextStyle.moneyCardCommentText,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-                trailing: SizedBox(
-                  width: (MediaQuery.of(context).size.width / 3.4) + 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //TODO: edit currency
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 3.4,
-                        child: Text(
-                          "\$" + formatCurrency.format(val.money).replaceAll('\$', ''),
-                          style: CustomTextStyle.moneyCardMoneyText,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 5, left: 5),
-                        child: Icon(
-                          val.type.icon(),
-                          color: val.type.color(),
-                        ),
-                      ),
-                    ],
+                  title: Text(val.title != '' ? val.title : 'unnamed',
+                      style: CustomTextStyle.moneyCardHeaderText(context), overflow: TextOverflow.ellipsis),
+                  subtitle: Text(
+                    val.comment,
+                    style: CustomTextStyle.moneyCardCommentText(context),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
+                  trailing: SizedBox(
+                    width: (MediaQuery.of(context).size.width / 3.4) + 40,
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //TODO: edit currency
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 3.4,
+                              child: Text(
+                                "\$" + formatCurrency.format(val.money * val.cycle.days()).replaceAll('\$', '').replaceAll('.00', ''),
+                                style: CustomTextStyle.moneyCardMoneyText(context),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                textAlign: TextAlign.end,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5, left: 5, top: 3, bottom: 3),
+                              child: Icon(
+                                val.type.icon(),
+                                color: val.type.color(),
+                                size: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              val.cycle.display(),
+                              style: CustomTextStyle.moneyCardMoneyText(context),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.end,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5, left: 15, top: 3, bottom: 3),
+                              child: Icon(
+                                val.cycle.icon(),
+                                color: Theme.of(context).accentColor,
+                                size: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              val.paymentType.display(),
+                              style: CustomTextStyle.moneyCardMoneyText(context),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.end,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5, left: 15, top: 3, bottom: 3),
+                              child: Icon(
+                                val.paymentType.icon(),
+                                color: Theme.of(context).accentColor,
+                                size: 18,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  textColor: Colors.black,
                 ),
-                textColor: Colors.black,
               ),
             ),
           );
         }).toList();
         super.widget.isReduced ? list = list.take(3).toList() : null;
         return ListView.builder(
+          padding: const EdgeInsets.all(0),
           shrinkWrap: true,
           controller: _controller,
           itemCount: list.length,

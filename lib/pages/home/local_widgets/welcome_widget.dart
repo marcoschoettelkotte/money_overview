@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:money_overview/pages/settings/settings_home_page.dart';
 import 'package:money_overview/themes/style_templates/custom_box_decoration_style.dart';
 import 'package:money_overview/themes/style_templates/custom_text_style.dart';
 
@@ -34,11 +35,11 @@ class WelcomeWidget extends StatelessWidget {
                   children: [
                     Text(
                       'Welcome!',
-                      style: CustomTextStyle.subHeader1Text,
+                      style: CustomTextStyle.subHeader1Text(context),
                     ),
                     Text(
                       username,
-                      style: CustomTextStyle.header1Text,
+                      style: CustomTextStyle.header1Text(context),
                     )
                   ],
                 ),
@@ -46,13 +47,15 @@ class WelcomeWidget extends StatelessWidget {
             ],
           ),
           Container(
-            decoration: CustomBoxDecorationStyle.whiteRoundedBoxStyle,
+            decoration: CustomBoxDecorationStyle.whiteRoundedBoxStyle(context),
             child: IconButton(
                 padding: const EdgeInsets.all(3),
-                onPressed: () {},
-                icon: const Icon(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsHomePage()));
+                },
+                icon: Icon(
                   Icons.settings_rounded,
-                  color: Color(0xFFa1b1c8),
+                  color: Theme.of(context).cardColor,
                   size: 25,
                 )),
           )

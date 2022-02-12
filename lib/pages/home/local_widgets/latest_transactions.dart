@@ -25,7 +25,7 @@ class _LatestTransactionsWidgetState extends State<LatestTransactionsWidget> {
             children: [
               Text(
                 'Transactions',
-                style: CustomTextStyle.header2Text,
+                style: CustomTextStyle.header2Text(context),
               ),
               TextButton(
                   onPressed: () {
@@ -34,7 +34,7 @@ class _LatestTransactionsWidgetState extends State<LatestTransactionsWidget> {
                   style: CustomButtonStyle.miniTextButtonStyle,
                   child: Text(
                     'View All',
-                    style: CustomTextStyle.miniButtonText,
+                    style: CustomTextStyle.miniButtonText(context),
                   ))
             ],
           ),

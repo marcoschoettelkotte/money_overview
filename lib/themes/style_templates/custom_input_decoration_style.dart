@@ -10,69 +10,118 @@ class CustomInputDecorationStyle {
     return InputDecoration(
       filled: true,
       hintText: placeholder,
-      prefixStyle: CustomTextStyle.header3Text,
+      counterText: '',
+      prefixStyle: CustomTextStyle.header3Text(context),
       prefixIcon: TextButton(
         style: CustomButtonStyle.noOverlayButtonStyle,
         onPressed: () {},
         child: Text(
           currencySymbol,
-          style: CustomTextStyle.header3Text,
+          style: CustomTextStyle.header3Text(context),
         ),
       ),
-      fillColor: Colors.white,
-      prefixIconColor: const Color(0xFF43648f),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(100)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      fillColor: Theme.of(context).primaryColor,
+      prefixIconColor: Theme.of(context).accentColor,
+      border: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
-      focusedBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(100)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
     );
   }
 
-  static InputDecoration input2OutlineStyle(IconData icon, String? placeholder) {
+  static InputDecoration input2OutlineStyle(BuildContext context, IconData icon, String? placeholder) {
     return InputDecoration(
       filled: true,
       hintText: placeholder,
       counterText: '',
-      hintStyle: const TextStyle(color: Color(0xFF43648f)),
+      hintStyle: TextStyle(color: Theme.of(context).accentColor),
       prefixIcon: Icon(
         icon,
-        color: const Color(0xFF43648f),
+        color: Theme.of(context).accentColor,
       ),
-      fillColor: Colors.white,
-      prefixIconColor: const Color(0xFF43648f),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      fillColor: Theme.of(context).primaryColor,
+      prefixIconColor: Theme.of(context).accentColor,
+      border: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
-      focusedBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
     );
   }
 
-  static InputDecoration input3OutlineStyle(IconData icon) {
+  static InputDecoration input3OutlineStyle(BuildContext context, IconData icon) {
     return InputDecoration(
       filled: true,
       counterText: '',
-      hintStyle: const TextStyle(color: Color(0xFF43648f)),
+      hintStyle: TextStyle(color: Theme.of(context).accentColor),
       prefixIcon: Icon(
         icon,
-        color: const Color(0xFF43648f),
+        color: Theme.of(context).accentColor,
       ),
-      fillColor: Colors.white,
-      prefixIconColor: const Color(0xFF43648f),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      fillColor: Theme.of(context).primaryColor,
+      prefixIconColor: Theme.of(context).accentColor,
+      border: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
-      focusedBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1),
       ),
     );
   }

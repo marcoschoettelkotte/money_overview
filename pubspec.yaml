@@ -46,6 +46,7 @@ dependencies:
   uuid: ^3.0.5
   hive_flutter: ^1.1.0
   path_provider: ^2.0.8
+  currency_pickers: ^1.0.6
 
 dev_dependencies:
   flutter_test:

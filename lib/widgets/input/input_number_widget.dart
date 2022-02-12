@@ -21,8 +21,8 @@ class InputNumberWidget extends StatelessWidget {
           child: TextFormField(
             enabled: enabled,
             initialValue: initValue,
-            style: CustomTextStyle.inputNumberText,
-            cursorColor: const Color(0xFF43648f),
+            style: CustomTextStyle.inputNumberText(context),
+            cursorColor: Theme.of(context).accentColor,
             maxLines: 1,
             keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
             maxLength: 9,

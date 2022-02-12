@@ -36,9 +36,9 @@ class _NavigationBarPageState extends State<NavigationPage> {
             ),
             child: BottomNavigationBar(
               elevation: 0,
-              backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xFFa1b2c8),
-              unselectedItemColor: const Color(0xFFa1b2c8).withOpacity(0.6),
+              backgroundColor: Theme.of(context).primaryColor,
+              selectedItemColor:  Theme.of(context).cardColor,
+              unselectedItemColor:  Theme.of(context).cardColor.withOpacity(0.6),
               items: NavigationBarItems.getItems(context),
               showSelectedLabels: false,
               showUnselectedLabels: false,

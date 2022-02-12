@@ -25,11 +25,20 @@ class CustomBoxDecorationStyle {
         colors: [Color(0xFFff9766), Color(0xFFd06af4), Color(0xFF0bb7df)],
         transform: GradientRotation(3.9401),
       ));
+  static BoxDecoration settingsIconBoxStyle = const BoxDecoration(
+      shape: BoxShape.rectangle,
+      borderRadius: BorderRadius.all(Radius.circular(14)),
+      gradient: LinearGradient(
+        colors: [Color(0xFFff9766), Color(0xFFd06af4), Color(0xFF0bb7df)],
+        transform: GradientRotation(3.9401),
+      ));
 
-  static BoxDecoration whiteRoundedBoxStyle = const BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.all(Radius.circular(16)),
-  );
+  static BoxDecoration whiteRoundedBoxStyle(BuildContext context) {
+    return BoxDecoration(
+      color: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    );
+  }
 
   static BoxDecoration bottomBarBoxStyle = BoxDecoration(
     borderRadius: const BorderRadius.only(topRight: Radius.circular(27), topLeft: Radius.circular(27)),

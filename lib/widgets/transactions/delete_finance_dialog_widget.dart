@@ -14,17 +14,17 @@ class CustomDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).primaryColor,
           title: Text(
             title.toUpperCase(),
-            style: CustomTextStyle.alertTitleText,
+            style: CustomTextStyle.alertTitleText(context),
           ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(
                   subtitle,
-                  style: CustomTextStyle.alertSubtitleText,
+                  style: CustomTextStyle.alertSubtitleText(context),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 25),

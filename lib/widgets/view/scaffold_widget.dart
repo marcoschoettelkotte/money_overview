@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 class ScaffoldWidget extends StatelessWidget {
@@ -21,12 +22,16 @@ class ScaffoldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.transparent, systemStatusBarContrastEnforced: true));
     return Scaffold(
-        backgroundColor: backgroundColor ?? const Color(0xFFf3f4f6),
+        backgroundColor: backgroundColor ?? Theme.of(context).backgroundColor,
         bottomNavigationBar: bottomNavigationBar,
-        appBar: appBar,
+        appBar: appBar ??
+            AppBar(
+              toolbarHeight: 0,
+              elevation: 0,
+              shadowColor: Colors.transparent,
+              backgroundColor: Colors.transparent,
+            ),
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Padding(

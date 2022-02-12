@@ -39,7 +39,7 @@ class _AddFormWidgetState extends State<AddFormWidget> {
             children: [
               Text(
                 "Add Transaction",
-                style: CustomTextStyle.header3Text,
+                style: CustomTextStyle.header3Text(context),
               ),
               InputNumberWidget(enabled: true, controller: _moneyAmountController, placeholder: '0.00'),
               InputTextWidget(

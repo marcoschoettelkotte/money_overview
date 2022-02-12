@@ -31,10 +31,10 @@ class _DropdownWidgetState extends State<MoneyPaymentTypeDropdownWidget> {
         child: DropdownButtonFormField(
             value: super.widget.value ?? super.widget.dropdownItems.moneyPaymentTypeValue,
             isDense: false,
-            style: CustomTextStyle.header3Text,
-            dropdownColor: super.widget.isEnabled ? Colors.white : Colors.white.withOpacity(0.5),
+            style: CustomTextStyle.header3Text(context),
+            dropdownColor: super.widget.isEnabled ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.5),
             decoration:
-                CustomInputDecorationStyle.input3OutlineStyle(super.widget.dropdownItems.moneyPaymentTypeValue.icon()),
+                CustomInputDecorationStyle.input3OutlineStyle(context, super.widget.dropdownItems.moneyPaymentTypeValue.icon()),
             items: listOfValue.map((MoneyPaymentType val) {
               return DropdownMenuItem(
                 value: val,

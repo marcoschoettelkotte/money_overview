@@ -25,8 +25,7 @@ enum MoneyCycle {
 
 MoneyCycle findMoneyCycleByName(String name) {
   try {
-    return MoneyCycle.values
-        .firstWhere((el) => equalsIgnoreCase(el.name, name));
+    return MoneyCycle.values.firstWhere((el) => equalsIgnoreCase(el.name, name));
   } catch (err) {
     return MoneyCycle.notSet;
   }
@@ -49,6 +48,48 @@ extension MoneyCycleIcon on MoneyCycle {
         return FontAwesomeIcons.solidCalendar;
       case MoneyCycle.notSet:
         return FontAwesomeIcons.exclamation;
+    }
+  }
+}
+
+extension MoneyCycleDays on MoneyCycle {
+  int days() {
+    switch (this) {
+      case MoneyCycle.daily:
+        return 1;
+      case MoneyCycle.weekly:
+        return 7;
+      case MoneyCycle.monthly:
+        return 30;
+      case MoneyCycle.quarterly:
+        return 90;
+      case MoneyCycle.halfYearly:
+        return 180;
+      case MoneyCycle.yearly:
+        return 360;
+      case MoneyCycle.notSet:
+        return 0;
+    }
+  }
+}
+
+extension MoneyCycleDivider on MoneyCycle {
+  double divider(money) {
+    switch (this) {
+      case MoneyCycle.daily:
+        return money * 30;
+      case MoneyCycle.weekly:
+        return money * 4;
+      case MoneyCycle.monthly:
+        return money * 1;
+      case MoneyCycle.quarterly:
+        return money / 3;
+      case MoneyCycle.halfYearly:
+        return money / 6;
+      case MoneyCycle.yearly:
+        return money / 12;
+      case MoneyCycle.notSet:
+        return 0;
     }
   }
 }

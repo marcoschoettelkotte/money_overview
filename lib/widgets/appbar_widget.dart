@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppBarWidget extends StatelessWidget {
@@ -15,9 +16,9 @@ class AppBarWidget extends StatelessWidget {
         children: [
           title ?? Container(),
           IconButton(
-              icon: const Icon(
+              icon: Icon(
                 FontAwesomeIcons.times,
-                color: Color(0xFFa1b1c8),
+                color: Theme.of(context).buttonColor,
               ),
               onPressed: () => Navigator.pop(context)),
         ],

@@ -32,12 +32,12 @@ class _OverviewCardBottomWidgetState extends State<OverviewCardBottomWidget> {
           children: [
             Text(
               super.widget.moneyType.name,
-              style: CustomTextStyle.moneyTypeTitleText,
+              style: CustomTextStyle.moneyTypeTitleText(context),
               overflow: TextOverflow.fade,
             ),
             Text(
-              formatCurrency.format(super.widget.money).replaceFirst('\$', ''),
-              style: CustomTextStyle.moneyTypeAmountText,
+              formatCurrency.format(super.widget.money).replaceAll('.00', ''),
+              style: CustomTextStyle.moneyTypeAmountText(context),
               overflow: TextOverflow.fade,
             )
           ],

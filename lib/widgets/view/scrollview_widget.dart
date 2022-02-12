@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ScrollViewWidget extends StatelessWidget {
   final Widget child;
@@ -7,6 +9,12 @@ class ScrollViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemStatusBarContrastEnforced: false,
+        systemNavigationBarIconBrightness:Brightness.light,
+        systemNavigationBarColor: Colors.black,
+        statusBarBrightness: Brightness.light));
     return NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
           overScroll.disallowIndicator();

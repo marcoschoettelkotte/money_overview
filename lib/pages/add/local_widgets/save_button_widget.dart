@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:money_overview/models/finance/finance_model.dart';
+import 'package:money_overview/models/money/money_cycle.dart';
 import 'package:money_overview/pages/add/local_widgets/dropdowns/dropdown_items_model.dart';
 import 'package:money_overview/themes/style_templates/custom_box_decoration_style.dart';
 import 'package:money_overview/themes/style_templates/custom_text_style.dart';
@@ -46,7 +47,7 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
                   id: const Uuid().v1(),
                   title: super.widget.titleController.text,
                   comment: super.widget.noticeController.text,
-                  money: double.parse(super.widget.moneyAmountController.text),
+                  money: double.parse(super.widget.moneyAmountController.text) / super.widget.dropdownItems.moneyCycleValue.days(),
                   currency: 'Dollar',
                   type: super.widget.dropdownItems.moneyTypeValue,
                   paymentType: super.widget.dropdownItems.moneyPaymentTypeValue,
@@ -75,7 +76,7 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
                     child: !isLoading
                         ? Text(
                             'Save'.toUpperCase(),
-                            style: CustomTextStyle.moneyTypeAmountText,
+                            style: CustomTextStyle.moneyTypeAmountText(context),
                           )
                         : const LoadingWidget(color: Colors.white),
                   ),
