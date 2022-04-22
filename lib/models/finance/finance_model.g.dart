@@ -26,13 +26,14 @@ class FinanceModelAdapter extends TypeAdapter<FinanceModel> {
       paymentType: fields[6] as MoneyPaymentType,
       category: fields[7] as MoneyCategory,
       cycle: fields[8] as MoneyCycle,
+      isActive: fields[9] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, FinanceModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class FinanceModelAdapter extends TypeAdapter<FinanceModel> {
       ..writeByte(7)
       ..write(obj.category)
       ..writeByte(8)
-      ..write(obj.cycle);
+      ..write(obj.cycle)
+      ..writeByte(9)
+      ..write(obj.isActive);
   }
 
   @override

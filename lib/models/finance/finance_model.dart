@@ -27,6 +27,8 @@ class FinanceModel {
   final MoneyCategory category;
   @HiveField(8)
   final MoneyCycle cycle;
+  @HiveField(9)
+  bool isActive;
 
   FinanceModel(
       {required this.id,
@@ -37,7 +39,8 @@ class FinanceModel {
       required this.type,
       required this.paymentType,
       required this.category,
-      required this.cycle});
+      required this.cycle,
+      required this.isActive});
 
   FinanceModel.from({required Map<String, dynamic> json})
       : id = json['id'],
@@ -48,7 +51,8 @@ class FinanceModel {
         type = findMoneyTypeByName(json['type']),
         paymentType = findMoneyPaymentTypeByName(json['paymentType']),
         category = findMoneyCategoryByName(json['category']),
-        cycle = findMoneyCycleByName(json['cycle']);
+        cycle = findMoneyCycleByName(json['cycle']),
+        isActive = json['isActive'];
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -59,5 +63,11 @@ class FinanceModel {
         'type': type,
         'category': category,
         'cycle': cycle,
+        'isActive': isActive
       };
+
+  FinanceModel updateActive(){
+    isActive = !isActive;
+    return this;
+  }
 }

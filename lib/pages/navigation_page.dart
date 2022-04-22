@@ -15,11 +15,19 @@ class NavigationPage extends StatefulWidget {
 }
 
 class _NavigationBarPageState extends State<NavigationPage> {
+  List<Color> colors = [const Color(0xFFff9766), const Color(0xFFd06af4), const Color(0xFF0bb7df)];
   int selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
+    });
+  }
+
+  void _changeBackgroundColor() {
+    setState(() {
+      List<Color> newColors = [colors[2], colors[0], colors[1]];
+      colors = newColors;
     });
   }
 
@@ -37,8 +45,8 @@ class _NavigationBarPageState extends State<NavigationPage> {
             child: BottomNavigationBar(
               elevation: 0,
               backgroundColor: Theme.of(context).primaryColor,
-              selectedItemColor:  Theme.of(context).cardColor,
-              unselectedItemColor:  Theme.of(context).cardColor.withOpacity(0.6),
+              selectedItemColor: Theme.of(context).cardColor,
+              unselectedItemColor: Theme.of(context).cardColor.withOpacity(0.6),
               items: NavigationBarItems.getItems(context),
               showSelectedLabels: false,
               showUnselectedLabels: false,
@@ -48,7 +56,10 @@ class _NavigationBarPageState extends State<NavigationPage> {
               type: BottomNavigationBarType.fixed,
             ),
           )),
-      floatingActionButton: FloatingActionButtonWidget.getFloatingActionButton(context),
+      floatingActionButton: GestureDetector(
+          onTap: () => _changeBackgroundColor(),
+          onLongPress: () => _changeBackgroundColor(),
+          child: FloatingActionButtonWidget.getFloatingActionButton(context, colors)),
     );
   }
 }

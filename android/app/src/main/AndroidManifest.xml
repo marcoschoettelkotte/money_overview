@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.resbo.money_overview">
    <application
-        android:label="money_overview"
+        android:label="Money Tracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

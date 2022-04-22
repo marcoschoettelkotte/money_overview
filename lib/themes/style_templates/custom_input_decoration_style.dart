@@ -11,6 +11,7 @@ class CustomInputDecorationStyle {
       filled: true,
       hintText: placeholder,
       counterText: '',
+      hintStyle: CustomTextStyle.inputNumberText(context),
       prefixStyle: CustomTextStyle.header3Text(context),
       prefixIcon: TextButton(
         style: CustomButtonStyle.noOverlayButtonStyle,

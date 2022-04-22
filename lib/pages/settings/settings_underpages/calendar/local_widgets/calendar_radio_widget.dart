@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:money_overview/models/money/money_cycle.dart';
 import 'package:money_overview/models/settings/settings_model.dart';
+import 'package:money_overview/themes/colors.dart';
 import 'package:money_overview/themes/style_templates/custom_text_style.dart';
 
 class CalendarRadioWidget extends StatelessWidget {
@@ -27,12 +28,12 @@ class CalendarRadioWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "${moneyCycle.display()} (${moneyCycle.days()})",
+            moneyCycle.display(),
             style: CustomTextStyle.header2Text(context),
           ),
           Radio(
               value: moneyCycle,
-              fillColor: MaterialStateColor.resolveWith((states) => Theme.of(context).accentColor),
+              fillColor: MaterialStateColor.resolveWith((states) => CColors.lightBlue),
               groupValue: groupValue,
               onChanged: (MoneyCycle? value) {
                 model.defaultCalendar = value!;

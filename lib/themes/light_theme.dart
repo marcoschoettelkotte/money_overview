@@ -12,6 +12,7 @@ class LightTheme {
     accentColor: const Color(0xFF293d58),
     buttonColor: const Color(0xFF43648f),
     dividerColor: const Color(0xFF43648f),
+    indicatorColor: const Color(0xFF0bb7df),
     cardColor: const Color(0xFFa1b1c8),
     appBarTheme: const AppBarTheme(
       brightness: Brightness.light,

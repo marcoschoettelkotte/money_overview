@@ -46,7 +46,7 @@ class _SettingsHomePageState extends State<SettingsHomePage> {
                             child: Text('Settings', style: CustomTextStyle.header3BigText(context)),
                           ),
                         ),
-                        SettingsItemWidget(
+                        const SettingsItemWidget(
                           title: 'Marco',
                           avatar: CircleAvatar(
                             backgroundColor: Color(0xFFf7c35a),

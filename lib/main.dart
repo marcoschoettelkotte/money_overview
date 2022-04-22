@@ -14,6 +14,9 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   // system settings
+  ErrorWidget.builder = (FlutterErrorDetails details){
+    return const Material();
+  };
   WidgetsFlutterBinding.ensureInitialized();
 
   final appDocumentDir = await getApplicationDocumentsDirectory();

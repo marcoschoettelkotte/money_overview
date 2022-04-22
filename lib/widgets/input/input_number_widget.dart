@@ -15,7 +15,7 @@ class InputNumberWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 22, right: 22, bottom: 0),
+      padding: const EdgeInsets.only(top: 14, left: 22, right: 22, bottom: 6),
       child: SizedBox(
           width: 400.0,
           child: TextFormField(

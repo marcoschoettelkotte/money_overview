@@ -21,7 +21,6 @@ class MoneyOverviewApp extends StatefulWidget {
 }
 
 class _MoneyOverviewAppState extends State<MoneyOverviewApp> {
-
   @override
   void initState() {
     super.initState();
@@ -39,12 +38,17 @@ class _MoneyOverviewAppState extends State<MoneyOverviewApp> {
     bool darkModeOn = brightness == Brightness.dark;
 
     if (Hive.box<SettingsModel>('settings').values.isEmpty) {
-      Hive.box<SettingsModel>('settings').put(0, SettingsModel(username: '',
-          imageBase64: '',
-          defaultCalendar: MoneyCycle.monthly,
-          defaultCurrency: 'Dollar',
-          isDarkMode: darkModeOn,
-          languageCode: 'en'));
+      Hive.box<SettingsModel>('settings').put(
+          0,
+          SettingsModel(
+              username: '',
+              imageBase64: '',
+              defaultCalendar: MoneyCycle.monthly,
+              defaultCurrency: 'Dollar',
+              isDarkMode: darkModeOn,
+              languageCode: 'en',
+              defaultDateMonth: null,
+              isCurrentDateMonth: true));
     }
 
     Future<List<Currency>?>? list = CurrencyService().fetchCurrenciesByCurrency('eur');
@@ -52,15 +56,14 @@ class _MoneyOverviewAppState extends State<MoneyOverviewApp> {
 
     return ValueListenableBuilder<Box<SettingsModel>>(
         valueListenable: Hive.box<SettingsModel>('settings').listenable(),
-      builder: (BuildContext context, Box<SettingsModel> box, widget) {
+        builder: (BuildContext context, Box<SettingsModel> box, widget) {
+          return MaterialApp(
 
-        return MaterialApp(
-            theme: LightTheme.lightTheme,
-            darkTheme: DarkTheme.darkTheme,
-            themeMode: box.values.first.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-            debugShowCheckedModeBanner: false,
-            home: const NavigationPage());
-      }
-    );
+              theme: LightTheme.lightTheme,
+              darkTheme: DarkTheme.darkTheme,
+              themeMode: box.values.first.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              debugShowCheckedModeBanner: false,
+              home: const NavigationPage());
+        });
   }
 }

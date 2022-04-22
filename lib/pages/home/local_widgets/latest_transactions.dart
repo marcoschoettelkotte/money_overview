@@ -6,8 +6,9 @@ import 'package:money_overview/widgets/transactions/transactions_widget.dart';
 
 class LatestTransactionsWidget extends StatefulWidget {
   final bool isReduced;
+  final int? loadedTransactions;
 
-  const LatestTransactionsWidget({Key? key, required this.isReduced}) : super(key: key);
+  const LatestTransactionsWidget({Key? key, required this.isReduced, this.loadedTransactions,}) : super(key: key);
 
   @override
   _LatestTransactionsWidgetState createState() => _LatestTransactionsWidgetState();
@@ -38,7 +39,7 @@ class _LatestTransactionsWidgetState extends State<LatestTransactionsWidget> {
                   ))
             ],
           ),
-          TransactionsWidget(isReduced: super.widget.isReduced)
+          TransactionsWidget(isReduced: super.widget.isReduced, loadedTransactions: super.widget.loadedTransactions)
         ]));
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:money_overview/models/finance/finance_model.dart';
 import 'package:money_overview/models/money/money_cycle.dart';
+import 'package:money_overview/models/settings/settings_model.dart';
 import 'package:money_overview/pages/add/local_widgets/dropdowns/dropdown_items_model.dart';
 import 'package:money_overview/themes/style_templates/custom_box_decoration_style.dart';
 import 'package:money_overview/themes/style_templates/custom_text_style.dart';
@@ -36,23 +37,29 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 32, left: 14, right: 14, bottom: 6),
+      padding: const EdgeInsets.only(top: 16, left: 14, right: 14, bottom: 6),
       child: SizedBox(
         width: 600,
         child: GestureDetector(
           onTap: () async {
             setState(() => isLoading = true);
             if (super.widget.formKey.currentState!.validate()) {
+              Box<SettingsModel> settingsBox = Hive.box("settings");
+              bool isCurrentMonth = settingsBox.get(0)!.isCurrentDateMonth;
+              DateTime date = DateTime.parse(settingsBox.get(0)!.defaultDateMonth!);
+              DateTime currentDate = DateTime.now();
               FinanceModel financeModel = FinanceModel(
                   id: const Uuid().v1(),
                   title: super.widget.titleController.text,
                   comment: super.widget.noticeController.text,
-                  money: double.parse(super.widget.moneyAmountController.text) / super.widget.dropdownItems.moneyCycleValue.days(),
+                  //
+                  money: double.parse(super.widget.moneyAmountController.text),
                   currency: 'Dollar',
                   type: super.widget.dropdownItems.moneyTypeValue,
                   paymentType: super.widget.dropdownItems.moneyPaymentTypeValue,
                   category: super.widget.dropdownItems.moneyCategoryValue,
-                  cycle: super.widget.dropdownItems.moneyCycleValue);
+                  cycle: super.widget.dropdownItems.moneyCycleValue,
+                  isActive: true);
               //var finances = await Hive.openBox('finances');
               await Future.delayed(const Duration(milliseconds: 200), () => setState(() => isLoading = false));
               Hive.box<FinanceModel>('finances').put(financeModel.id, financeModel);

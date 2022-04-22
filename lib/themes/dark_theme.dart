@@ -10,6 +10,7 @@ class DarkTheme {
     accentColor: const Color(0xffd6d6f7),
     buttonColor: const Color(0xffc3c3e8),
     cardColor: const Color(0xffA8A8C7),
+    indicatorColor: const Color(0xFF0bb7df),
     appBarTheme: const AppBarTheme(
       brightness: Brightness.dark,
       systemOverlayStyle: SystemUiOverlayStyle.light,

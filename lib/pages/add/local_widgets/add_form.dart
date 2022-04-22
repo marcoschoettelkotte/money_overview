@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:money_overview/models/money/money_category.dart';
 import 'package:money_overview/models/money/money_cycle.dart';
 import 'package:money_overview/pages/add/local_widgets/dropdowns/dropdown_items_model.dart';
@@ -24,8 +25,11 @@ class _AddFormWidgetState extends State<AddFormWidget> {
   final TextEditingController _moneyAmountController = TextEditingController();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _noticeController = TextEditingController();
+
   final dropdownItems = DropdownItemsModel();
   final _formKey = GlobalKey<FormState>();
+
+
 
   @override
   Widget build(BuildContext context) {

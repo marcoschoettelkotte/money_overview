@@ -25,15 +25,15 @@ class _DropdownWidgetState extends State<MoneyTypeDropdownWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18, left: 14, right: 14, bottom: 6),
+      padding: const EdgeInsets.only(top: 14, left: 14, right: 14, bottom: 6),
       child: SizedBox(
         width: 800.0,
         child: DropdownButtonFormField(
             value: super.widget.value ?? super.widget.dropdownItems.moneyTypeValue,
-            isDense: false,
             style: CustomTextStyle.header3Text(context),
-            dropdownColor: super.widget.isEnabled ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.5),
-            decoration: CustomInputDecorationStyle.input3OutlineStyle(context, super.widget.dropdownItems.moneyTypeValue.icon()),
+            dropdownColor: Theme.of(context).primaryColor,
+            decoration: CustomInputDecorationStyle.input3OutlineStyle(
+                context, super.widget.dropdownItems.moneyTypeValue.icon()),
             items: listOfValue.map((MoneyType val) {
               return DropdownMenuItem(
                 value: val,

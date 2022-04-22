@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:money_overview/models/money/money_cycle.dart';
+
 part 'settings_model.g.dart';
 
 @HiveType(typeId: 10)
@@ -16,6 +17,10 @@ class SettingsModel {
   bool isDarkMode;
   @HiveField(5)
   String languageCode;
+  @HiveField(6)
+  String? defaultDateMonth;
+  @HiveField(7)
+  bool isCurrentDateMonth;
 
   SettingsModel(
       {required this.username,
@@ -23,7 +28,9 @@ class SettingsModel {
       required this.defaultCalendar,
       required this.defaultCurrency,
       required this.isDarkMode,
-      required this.languageCode});
+      required this.languageCode,
+      required this.defaultDateMonth,
+      required this.isCurrentDateMonth});
 
   SettingsModel.from({required Map<String, dynamic> json})
       : username = json['username'],
@@ -31,7 +38,9 @@ class SettingsModel {
         defaultCalendar = json['defaultCalendar'],
         defaultCurrency = json['defaultCurrency'],
         isDarkMode = json['isDarkMode'],
-        languageCode = json['languageCode'];
+        languageCode = json['languageCode'],
+        defaultDateMonth = json['defaultDateMonth'],
+        isCurrentDateMonth = json['isCurrentDateMonth'];
 
   Map<String, dynamic> toJson() => {
         'username': username,
@@ -39,6 +48,8 @@ class SettingsModel {
         'defaultCalendar': defaultCalendar,
         'defaultCurrency': defaultCurrency,
         'isDarkMode': isDarkMode,
-        'languageCode': languageCode
+        'languageCode': languageCode,
+        'defaultDateMonth': defaultDateMonth,
+        'isCurrentDateMonth': isCurrentDateMonth
       };
 }

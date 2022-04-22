@@ -3,20 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class CustomBoxDecorationStyle {
-  static BoxDecoration colorfulGradientCircleBoxStyle = const BoxDecoration(
-      shape: BoxShape.circle,
-      gradient: LinearGradient(
-        colors: [Color(0xFFff9766), Color(0xFFd06af4), Color(0xFF0bb7df)],
-        transform: GradientRotation(0.7853982),
-      ));
 
-  static BoxDecoration colorfulGradientRectangleBoxStyle = const BoxDecoration(
-      shape: BoxShape.rectangle,
-      borderRadius: BorderRadius.all(Radius.circular(32)),
-      gradient: LinearGradient(
-        colors: [Color(0xFFff9766), Color(0xFFd06af4), Color(0xFF0bb7df)],
-        transform: GradientRotation(3.9401),
-      ));
+  static BoxDecoration colorfulGradientCircleBoxStyle(List<Color> colors) {
+    return BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          colors: colors,
+          begin: const FractionalOffset(0, 1),
+          end: const FractionalOffset(1, 0),
+          stops: const [0, 0.5, 1],
+          tileMode: TileMode.clamp,
+        ));
+  }
+
+  static BoxDecoration colorfulGradientRectangleBoxStyle(List<Color> colors) {
+    return BoxDecoration(
+        shape: BoxShape.rectangle,
+        borderRadius: const BorderRadius.all(Radius.circular(32)),
+        gradient: LinearGradient(
+          colors: colors,
+          begin: const FractionalOffset(0, 1),
+          end: const FractionalOffset(1, 0),
+          stops: const [0, 0.5, 1],
+          tileMode: TileMode.clamp,
+        ));
+  }
 
   static BoxDecoration colorfulGradient2RectangleBoxStyle = const BoxDecoration(
       shape: BoxShape.rectangle,
@@ -36,7 +47,7 @@ class CustomBoxDecorationStyle {
   static BoxDecoration whiteRoundedBoxStyle(BuildContext context) {
     return BoxDecoration(
       color: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.all(Radius.circular(16)),
+      borderRadius: const BorderRadius.all(Radius.circular(16)),
     );
   }
 

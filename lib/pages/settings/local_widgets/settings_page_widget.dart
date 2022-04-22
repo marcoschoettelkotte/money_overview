@@ -31,7 +31,7 @@ class _SettingsPageState extends State<SettingsPageWidget> {
         ),
         title: Text(
           super.widget.settingsName,
-          style: CustomTextStyle.header2Text(context),
+          style: CustomTextStyle.settingsTitleText(context),
         ),
       ),
       body: ScrollViewWidget(

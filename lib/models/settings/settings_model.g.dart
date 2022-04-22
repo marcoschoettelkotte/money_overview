@@ -23,13 +23,15 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       defaultCurrency: fields[3] as String,
       isDarkMode: fields[4] as bool,
       languageCode: fields[5] as String,
+      defaultDateMonth: fields[6] as String?,
+      isCurrentDateMonth: fields[7] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, SettingsModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.username)
       ..writeByte(1)
@@ -41,7 +43,11 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       ..writeByte(4)
       ..write(obj.isDarkMode)
       ..writeByte(5)
-      ..write(obj.languageCode);
+      ..write(obj.languageCode)
+      ..writeByte(6)
+      ..write(obj.defaultDateMonth)
+      ..writeByte(7)
+      ..write(obj.isCurrentDateMonth);
   }
 
   @override

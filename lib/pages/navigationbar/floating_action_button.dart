@@ -5,7 +5,9 @@ import 'package:money_overview/pages/add/add_page.dart';
 import 'package:money_overview/themes/style_templates/custom_box_decoration_style.dart';
 
 class FloatingActionButtonWidget {
-  static Widget getFloatingActionButton(BuildContext context) {
+
+
+  static Widget getFloatingActionButton(BuildContext context, List<Color> colors) {
     return SizedBox(
       width: 64,
       height: 64,
@@ -18,10 +20,11 @@ class FloatingActionButtonWidget {
           elevation: 10,
           highlightElevation: 14,
           enableFeedback: false,
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 400),
             width: 64,
             height: 64,
-            decoration: CustomBoxDecorationStyle.colorfulGradientCircleBoxStyle,
+            decoration: CustomBoxDecorationStyle.colorfulGradientCircleBoxStyle(colors),
             child: const Icon(
               Icons.add_rounded,
               size: 44,

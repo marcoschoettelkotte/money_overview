@@ -27,8 +27,8 @@ class _ListPageState extends State<ListPage> {
           const AppBarWidget(),
           SliverList(
               delegate: SliverChildBuilderDelegate((_, int index) {
-            return const Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, top: 0, bottom: 10),
+            return Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 0, bottom: 10),
               child: TransactionsWidget(isReduced: false),
             );
           }, childCount: 1))

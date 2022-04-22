@@ -15,7 +15,7 @@ class InputTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18, left: 14, right: 14, bottom: 6),
+      padding: const EdgeInsets.only(top: 14, left: 14, right: 14, bottom: 6),
       child: SizedBox(
           width: 800.0,
           child: TextFormField(
